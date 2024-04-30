@@ -1,0 +1,33 @@
+substitutions:
+  node_name: esphome-test1
+
+esphome:
+  name: $node_name
+  name_add_mac_suffix: true
+  comment: "ESPHome API Test1"
+  build_path: ./.build/${node_name}
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+external_components:
+  - source: components
+    components: [api_test]
+
+logger:
+  baud_rate: 115200
+  level: DEBUG #[NONE,ERROR,WARN,DEBUG,VERBOSE,VERY_VERBOSE]
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  fast_connect: true
+  reboot_timeout: 30min
+
+api:
+
+ota:
+
+api_test:
